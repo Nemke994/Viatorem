@@ -1,0 +1,75 @@
+﻿
+@model  ViatoremModel.AdminViewModel
+@{
+    ViewBag.Title = "Schedule";
+}
+
+<!--------------Admmin nav menu-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="AdminIndex">Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="Bus">Bus<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="Location">Location</a>
+            <a class="nav-item nav-link" href="Route">Route</a>
+            <a class="nav-item nav-link active" href="Schedule">Schedule</a>
+            <a class="nav-item nav-link" href="User">User</a>
+        </div>
+    </div>
+</nav>
+
+<!--------------Add schedule form-------------->
+
+<div id="schFormAdmin">
+    @using (Html.BeginForm("AddSchedule", "Admin", FormMethod.Post))
+    {
+        <br />
+        <br />
+        <label>Select a route</label>
+        <select class="form-control" name="routeId">
+            @foreach (var route in Model.routes)
+            {
+                <option value="@route.RouteID.ToString()">@route.startLocation.Name - @route.endLocation.Name</option>
+            }
+        </select>
+        <br />
+        <label>Select a bus</label>
+        <select class="form-control" name="busId">
+            @foreach (var bus in Model.buses)
+            {
+                <option value="@bus.BusID.ToString()"> @bus.BusName</option>
+            }
+        </select>
+        <br />
+        <label>Select a date</label>
+        <input type="date" id="date" name="date" class="form-control" required />
+        <br />
+        <br />
+        <label>Departure time:</label> <input type="time" id="departureTime" name="departureTime" class="form-control" required />
+        <label>Arrival time:</label> <input type="time" id="arrivalTime" name="arrivalTime" class="form-control" required />
+        <br />
+        <button type="submit" name="submit" asp-action="AddSchedule" class="btn btn-primary">Add schedule</button>
+    }
+    <div style="color:red;font-weight:bold"> @TempData["msg"]</div>
+</div>
+
+<!--------------Delete schedule-------------->
+
+<br />
+@foreach (var sch in Model.schedules)
+{
+    <div id="busDivAdmin">
+        <hr style="border-color:rgba(255, 255, 255)">
+        <div><i class="fas fa-city"></i>: @sch.Route.startLocation.Name &nbsp;<i class="fas fa-arrow-right"></i>&nbsp; @sch.Route.endLocation.Name&nbsp;<i class="fas fa-city"></i><br /><i class="far fa-clock"></i>&nbsp;Departure Time: @sch.DepartureTime &nbsp;<i class="fas fa-arrow-right"></i>&nbsp;Arrival Time: @sch.ArrivalTime&nbsp;<i class="far fa-clock"></i><br /><i class="material-icons" style="vertical-align:middle; display:inline-flex; margin-left:-5px;">directions_bus</i>Bus Name: @sch.Bus.BusName</div>
+        <form action="DeleteSchedule">
+            <button id="btnDltBusAdmin" class="btn btn-danger float-right" type="submit" name="scheduleId" value="@sch.ScheduleID.ToString()" asp-action="DeleteSchedule" style="margin-bottom:5px;">
+                Delete
+            </button>
+        </form>
+        <br>
+    </div>
+}

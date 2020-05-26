@@ -1,0 +1,72 @@
+﻿@model  ViatoremModel.AdminViewModel
+@{
+    ViewBag.Title = "Route";
+    int i = 0;
+
+}
+
+<!--------------Admmin nav menu-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="AdminIndex">Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="Bus">Bus<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="Location">Location</a>
+            <a class="nav-item nav-link active" href="Route">Route</a>
+            <a class="nav-item nav-link" href="Schedule">Schedule</a>
+            <a class="nav-item nav-link" href="User">User</a>
+        </div>
+    </div>
+</nav>
+
+<!--------------Add route form-------------->
+
+<div id="routeFormAdmin">
+    @using (Html.BeginForm("AddRoute", "Admin", FormMethod.Post))
+    {
+        <label>Start Location</label>
+        <br>
+        <select id="routeStartLocAdmin" class="form-control" name="start">
+            <option value="" disabled selected>Select</option>
+            @foreach (var loc in Model.locations)
+            {
+                <option value="@loc.Name">@loc.Name</option>
+            }
+        </select>
+        <label>End Location</label>
+        <br>
+        <select id="routeEndLocAdmin" class="form-control" name="end">
+            <option value="" disabled selected>Select</option>
+            @foreach (var loc in Model.locations)
+            {
+                <option value="@loc.Name">@loc.Name</option>
+            }
+        </select>
+        <br>
+        <button type="submit" id="submitRouteAdmin" name="submit" asp-action="AddRoute" class="btn btn-primary">Add Route</button>
+    }
+</div>
+
+<!--------------Delete route-------------->
+
+<br>
+@foreach (var route in Model.routes)
+{
+    <div id="routeDivAdmin">
+        <hr style="border-color:rgba(255, 255, 255)">
+        <div><i class="fas fa-city"></i>&nbsp;@route.startLocation.Name &nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i>&nbsp;&nbsp;&nbsp;<i class="fas fa-city"></i>&nbsp; @route.endLocation.Name</div>
+        <form action="DeleteRoute">
+            <button type="submit" name="routeId" value="@route.RouteID.ToString()" asp-action="DeleteRoute" class="btn btn-danger float-right">
+                Delete
+            </button>
+        </form>
+        <br>
+    </div>
+}
+
+
+

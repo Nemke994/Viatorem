@@ -1,0 +1,80 @@
+﻿@model  ViatoremModel.HomeViewModel
+@{
+    string classNameSeat = "notReserved";
+    ViatoremModel.User currentUser = (ViatoremModel.User)Session["user"];
+}
+
+<!--------------Schedules list-------------->
+
+<span id="Confirmation"></span>
+@if (Model.schedules != null)
+{
+    foreach (var schedule in Model.schedules)
+    {
+        <div class="accordion panel-group" id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <div id="scheduleWrapper" data-toggle="tooltip" title="View seats">
+                            <div id="schedule" data-toggle="collapse" data-target="#@("tr"+schedule.ScheduleID.ToString())" aria-expanded="false" class="panel-body">
+                                <div class="panel-collapse collapse">
+                                    Start location: <p id="schedule-start">@schedule.Route.startLocation.Name</p>End location: <p id="schedule-end">@schedule.Route.endLocation.Name</p>
+                                </div>
+                                <div>
+                                    Time start: <p id="time-start" class="time-start @classNameSeat">@schedule.DepartureTime</p> Time end:<p id="time-end">@schedule.ArrivalTime</p>
+                                </div>
+                                <div>
+                                    Number of free seats: <p id="seats-left"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </h2>
+                </div>
+
+                <!--------------Seats reservation-------------->
+
+                <div id="@("tr"+schedule.ScheduleID.ToString())" class="collapse">
+                    <div class="card-body">
+                        <div id="allSeatsOne">
+                            @for (char i = 'A'; i <= 'D'; i++)
+                            {
+                                <div id="Col">
+                                    @for (int j = 1; j <= schedule.Bus.NumberOfSeats / 4; j++)
+                                    {
+
+
+
+                                        foreach (var seat in Model.seats)
+                                        {
+                                            string idName = schedule.ScheduleID.ToString() + i + j;
+                                            if (seat.SeatLoc == idName)
+                                            {
+                                                classNameSeat = "permanentlyReserved";
+                                                break;
+                                            }
+                                            classNameSeat = "notReserved";
+                                        }
+                                        <i id="@schedule.ScheduleID@i@j" data-toggle="tooltip" title="Seat @i@j" class="far fa-square @classNameSeat @schedule.ScheduleID"></i>
+                                    }
+                                </div>
+                                if (i == 'B')
+                                {
+                                    <br />
+                                }
+                            }
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@if (currentUser != null && Model.schedules.Count() != 0)
+{
+    <button id="reservationBtn" class="btn btn-primary">Reserve</button>
+}
+

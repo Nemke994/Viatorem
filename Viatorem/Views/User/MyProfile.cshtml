@@ -1,0 +1,55 @@
+﻿
+@{
+    /*--------------Current user--------------*/
+
+    ViewBag.Title = "MyProfile";
+    ViatoremModel.User currentUser = (ViatoremModel.User)Session["user"];
+}
+
+<!--------------Home nav menu users-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="~/Home/Index">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="MyTickets">My Tickets<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="MyProfile">My Profile</a>
+
+        </div>
+    </div>
+</nav>
+
+<!--------------User edit profile form-------------->
+
+<div id="userProfileEditForm">
+
+    <h4>Hello @currentUser.Username!</h4>
+    <br />
+
+
+    @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+    {
+        <label><i class="fas fa-user"></i>&nbsp;Username</label>
+        <br>
+        <input class="form-control" type="text" name="username" required value="@currentUser.Username" />
+        <br>
+        <label><i class="fas fa-key"></i>&nbsp;Old Password</label>
+        <br>
+        <input class="form-control" type="password" name="oldPass" required />
+        <br>
+        <label><i class="fas fa-key"></i>&nbsp;New Password</label>
+        <br>
+        <input class="form-control" type="password" name="pass" required />
+        <br>
+        <label><i class="far fa-envelope"></i>&nbsp;Email</label>
+        <br>
+        <input class="form-control" type="email" name="email" required value="@currentUser.Email" />
+        <br>
+
+        <button type="submit" class="btn btn-success">Save Changes</button>
+
+    }
+</div>

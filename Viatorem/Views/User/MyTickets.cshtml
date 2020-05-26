@@ -1,0 +1,55 @@
+﻿@model ViatoremModel.TicketViewModel
+@{
+    ViewBag.Title = "MyTickets";
+
+}
+
+<!--------------Home nav menu users-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="~/Home/Index">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="MyTickets">My Tickets<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="MyProfile">My Profile</a>
+        </div>
+    </div>
+</nav>
+
+<!--------------User tickets-------------->
+
+
+<div id="userTickets">
+    @using (Html.BeginForm("MyTickets", "User", FormMethod.Get))
+    {
+        <label>SortBy:</label>
+        <select name="sortSel" class= "form-control" style="width:10%">
+            <option value="date">Date</option>
+            <option value="route">Route</option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-primary">Sort</button>
+        <br>
+    }
+    @foreach (var ticket in Model.seats)
+    {
+        <div style="background-color:hsla(200, 50%, 37%, 0.4); border-radius:5px; padding:15px">
+            <div><i class="material-icons" style="vertical-align:middle; display:inline-flex; margin-left:-5px;">directions_bus</i>&nbsp;@ticket.Bus.BusName  Seat:<span style="font-weight:bold"> @ticket.SeatLoc.Substring(ticket.SeatLoc.Length - 2)</span></div>
+            <br />
+            <div>
+                <i class="fas fa-city"></i>&nbsp;@ticket.Schedule.Route.startLocation.Name&nbsp;<i class="fas fa-arrow-right"></i>&nbsp;@ticket.Schedule.Route.endLocation.Name&nbsp;<i class="fas fa-city"></i>&nbsp;
+                <br />
+                <div><i class="far fa-clock"></i>&nbsp;@ticket.Schedule.DepartureTime&nbsp;<i class="fas fa-arrow-right"></i>&nbsp;@ticket.Schedule.ArrivalTime&nbsp;<i class="far fa-clock"></i></div>
+            </div>
+            <br />
+
+
+
+        </div>
+        <br>
+    }
+
+</div>

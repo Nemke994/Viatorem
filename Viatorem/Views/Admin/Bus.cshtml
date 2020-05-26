@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ViatoremModel.Bus>
+@{
+    ViewBag.Title = "Bus";
+}
+
+<!--------------Admmin nav menu-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="AdminIndex">Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="Bus">Bus<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="Location">Location</a>
+            <a class="nav-item nav-link" href="Route">Route</a>
+            <a class="nav-item nav-link" href="Schedule">Schedule</a>
+            <a class="nav-item nav-link" href="User">User</a>
+        </div>
+    </div>
+</nav>
+
+<!--------------Add bus form-------------->
+
+<div id="busFormAdmin">
+
+
+    @using (Html.BeginForm("AddBus", "Admin", FormMethod.Post))
+    {
+        <label>Enter the bus name</label>
+        <input name="busName" id="busNameAdmin" type="text" class="form-control">
+        <br>
+        <label>Enter the number of seats</label>
+        <input name="numberOfSeats" id="bus" type="number" class="form-control">
+        <br>
+        <button type="submit" id="submit" name="submit" asp-action="AddBus" class="btn btn-primary">Add Bus</button>
+    }
+</div>
+<br>
+
+<!--------------Delete bus-------------->
+
+@foreach (var bus in Model)
+{
+    <div id="busDivAdmin">
+        <hr style="border-color:rgba(255, 255, 255)">
+        <div><i class="material-icons" style="vertical-align:middle; display:inline-flex">directions_bus</i>: @bus.BusName &nbsp;&nbsp;<i class="material-icons" style="vertical-align:middle; display:inline-flex">airline_seat_recline_extra</i>: @bus.NumberOfSeats</div>
+        <form action="DeleteBus">
+            <button id="btnDltBusAdmin" class="btn btn-danger float-right" type="submit" name="busId" value="@bus.BusID.ToString()" asp-action="DeleteBus" style="margin-bottom:5px;">
+                Delete
+            </button>
+        </form>
+        <br>
+    </div>
+}
+

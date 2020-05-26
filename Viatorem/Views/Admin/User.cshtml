@@ -1,0 +1,49 @@
+﻿@model  IEnumerable<ViatoremModel.User>
+@{
+    ViewBag.Title = "User";
+}
+
+<!--------------Admmin nav menu-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="AdminIndex">Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="Bus">Bus<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="Location">Location</a>
+            <a class="nav-item nav-link" href="Route">Route</a>
+            <a class="nav-item nav-link " href="Schedule">Schedule</a>
+            <a class="nav-item nav-link active" href="User">User</a>
+        </div>
+    </div>
+</nav>
+
+<!--------------Admin edit users-------------->
+
+@if (Model != null)
+{
+
+    foreach (var user in Model)
+    {
+        <div id="userDivAdmin">
+            <hr style="border-color:rgba(255, 255, 255)">
+            <div><i class="fas fa-user"></i>&nbsp;Username: @user.Username &nbsp;<i class="fas fa-users-cog"></i>&nbsp;Admin: <input type="checkbox" checked="@user.Admin" class="isAdmin" value="@user.Admin" id="@user.UserID" />&nbsp;&nbsp;<i class="far fa-envelope"></i>&nbsp;Email: @user.Email &nbsp;&nbsp;</div>
+            <form action="DeleteUser" method="post">
+                <button id="btnDltUserAdmin" class="btn btn-danger float-right" type="submit" name="userId" value="@user.UserID.ToString()" asp-action="DeleteUser" style="margin-bottom:5px;">
+                    Delete
+                </button>
+            </form>
+            <br>
+        </div>
+    }
+
+}
+else
+{
+    <br />
+    <h2 style="margin-left: 5%;">No users found!</h2>
+    <br />
+}

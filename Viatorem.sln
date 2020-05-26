@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viatorem", "Viatorem\Viatorem.csproj", "{FF1D3CB0-F49A-4FB9-AFCE-F0D6103C69E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViatoremModel", "ViatoremModel\ViatoremModel.csproj", "{B4825485-4978-4C27-973B-6010FA132010}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF1D3CB0-F49A-4FB9-AFCE-F0D6103C69E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF1D3CB0-F49A-4FB9-AFCE-F0D6103C69E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF1D3CB0-F49A-4FB9-AFCE-F0D6103C69E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF1D3CB0-F49A-4FB9-AFCE-F0D6103C69E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4825485-4978-4C27-973B-6010FA132010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4825485-4978-4C27-973B-6010FA132010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4825485-4978-4C27-973B-6010FA132010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4825485-4978-4C27-973B-6010FA132010}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82953643-C65D-4653-BCA1-65A1EB76D8A3}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://dev.softlab.rs:8080/tfs/softlab
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Viatorem\\Viatorem.csproj
+		SccProjectName1 = Viatorem
+		SccLocalPath1 = Viatorem
+		SccProjectUniqueName2 = ViatoremModel\\ViatoremModel.csproj
+		SccProjectName2 = ViatoremModel
+		SccLocalPath2 = ViatoremModel
+	EndGlobalSection
+EndGlobal

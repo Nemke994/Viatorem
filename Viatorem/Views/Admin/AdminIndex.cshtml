@@ -1,0 +1,34 @@
+﻿@model  ViatoremModel.AdminViewModel
+@{
+    /*--------------Current user--------------*/
+
+    ViatoremModel.User currentUser = (ViatoremModel.User)Session["user"];
+    ViewBag.Title = "AdminIndex";
+
+}
+
+<!--------------Admmin nav menu-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="AdminIndex">Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="Bus">Bus<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="Location">Location</a>
+            <a class="nav-item nav-link" href="Route">Route</a>
+            <a class="nav-item nav-link" href="Schedule">Schedule</a>
+            <a class="nav-item nav-link" href="User">User</a>
+        </div>
+    </div>
+</nav>
+<br />
+
+<!--------------Admmin welcome-------------->
+
+<h2 style="margin-left: 5%;">Welcome @currentUser.Username !</h2>
+<h3 style="margin-left: 5%;">This is the admin page</h3>
+<br />
+

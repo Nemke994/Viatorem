@@ -1,0 +1,90 @@
+﻿<style>
+    #aboutMembers:hover {
+        cursor: pointer;
+    }
+</style>
+
+
+<!--------------Home nav menu-------------->
+
+@{
+    /*--------------Current user--------------*/
+
+    ViewBag.Title = "Contact";
+    ViatoremModel.User currentUser = (ViatoremModel.User)Session["user"];
+    string welcome;
+    welcome = (currentUser == null) ? "" : "Welcome " + currentUser.Username;
+    string myProfile = "";
+    string myTickets = "";
+    string logoutPopup = "";
+    string login = "";
+    string userPath = "#";
+
+
+}
+@if (currentUser == null)
+{
+    myProfile = "";
+    myTickets = "";
+    logoutPopup = "Login";
+
+}
+else
+{
+    myTickets = "../User/MyTickets";
+    myProfile = "../User/MyProfile";
+    logoutPopup = "Logout";
+
+
+}
+
+<!--------------Home nav menu-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="Index">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" name="log" value="log">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            @if (currentUser != null)
+            {
+                <a class="nav-item nav-link" href="@myTickets">My Tickets<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="@myProfile">My Profile</a>
+            }
+            <a class="nav-item nav-link" href="About">About Us</a>
+            <a class="nav-item nav-link" href="Contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div style="margin-left:5%; margin-right:5%;">
+    We are <span style="font-weight:bold;">Viatorem</span>, our team consists of three members, our application has three different approaches,
+    client side which has guests and verified users, and admin side. We offer our clients on admin
+    side an administrative approach to their content, ability to add new locations, buses and schedules
+    and also edit and delete them, we offer users a possibility to reserve bus seats for different locations,
+    buses, routs and schedules and have a view for their reservation history. Users can also view all schedules
+    for different dates and routes. Guests only have the view option, and if they want to reserve a ticket they
+    would have to login as users (make an account if they already don't have one).
+    <br /><br />
+    <div id="aboutMembers" class="row" style="text-align:center;">
+        <div class="row col-md-4">
+            <img data-toggle="tooltip" title="Milan" id="memberOne" style="width:100%; padding:15px;" src="http://pluspng.com/img-png/user-png-icon-male-user-icon-512.png" />
+            <div data-toggle="tooltip" title="Milan FB" class="col-md-4"><a href="https://www.facebook.com"><i style="font-size:250%;" class="fab fa-facebook"></i></a></div>
+            <div data-toggle="tooltip" title="Milan Phone" class="col-md-4"><a href="#"><i style="font-size:250%;" class="fas fa-phone-alt"></i></a></div>
+            <div data-toggle="tooltip" title="Send Milan an E-Mail" class="col-md-4"><a href="mailto:milan@viatorem.com"><i style="font-size:250%;" class="far fa-envelope"></i></a></div>
+        </div>
+        <div class="row col-md-4">
+            <img data-toggle="tooltip" title="Nemanja" id="memberTwo" style="width:100%; padding:15px;" src="http://pluspng.com/img-png/user-png-icon-male-user-icon-512.png" />
+            <div data-toggle="tooltip" title="Nemanja FB" class="col-md-4"><a href="https://www.facebook.com"><i style="font-size:250%;" class="fab fa-facebook"></i></a></div>
+            <div data-toggle="tooltip" title="Nemanja Phone" class="col-md-4"><a href="#"><i style="font-size:250%;" class="fas fa-phone-alt"></i></a></div>
+            <div data-toggle="tooltip" title="Send Nemanja an E-Mail" class="col-md-4"><a href="mailto:nemanja@viatorem.com"><i style="font-size:250%;" class="far fa-envelope"></i></a></div>
+        </div>
+        <div class="row col-md-4">
+            <img data-toggle="tooltip" title="Branko" id="memberThree" style="width:100%; padding:15px;" src="http://pluspng.com/img-png/user-png-icon-male-user-icon-512.png" />
+            <div data-toggle="tooltip" title="Branko FB" class="col-md-4"><a href="https://www.facebook.com"><i style="font-size:250%;" class="fab fa-facebook"></i></a></div>
+            <div data-toggle="tooltip" title="Branko Phone" class="col-md-4"><a href="#"><i style="font-size:250%;" class="fas fa-phone-alt"></i></a></div>
+            <div data-toggle="tooltip" title="Send Branko an E-Mail" class="col-md-4"><a href="mailto:branko@viatorem.com"><i style="font-size:250%;" class="far fa-envelope"></i></a></div>
+        </div>
+    </div>
+</div>

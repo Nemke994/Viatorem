@@ -1,0 +1,18 @@
+﻿@model  ViatoremModel.HomeViewModel
+
+<!--------------Show schedules-------------->
+
+<div>
+    <br />
+    @foreach (var schedule in Model.schedules)
+    {
+        <div>
+            Start location:  @schedule.Route.startLocation.Name;<br />
+            End location: @schedule.Route.endLocation.Name;<br />
+            Departure time: @schedule.DepartureTime;<br />
+            Arrival time: @schedule.ArrivalTime;
+        </div>
+    }
+
+</div>
+

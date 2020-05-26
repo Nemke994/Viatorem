@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ViatoremModel.Location>
+@{
+    ViewBag.Title = "Location";
+}
+
+<!--------------Admmin nav menu-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="AdminIndex">Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="Bus">Bus<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="Location">Location</a>
+            <a class="nav-item nav-link" href="Route">Route</a>
+            <a class="nav-item nav-link" href="Schedule">Schedule</a>
+            <a class="nav-item nav-link" href="User">User</a>
+        </div>
+    </div>
+</nav>
+
+<!--------------Add location form-------------->
+
+<div id="locFormAdmin">
+    @using (Html.BeginForm("AddLocation", "Admin", FormMethod.Post))
+    {
+        <label>Enter the new location</label>
+        <input name="locationName" type="text" class="form-control">
+        <br>
+        <br>
+        <button type="submit" id="submit" name="submit" asp-action="AddLocation" class="btn btn-primary">Add Location</button>
+    }
+</div>
+
+<br>
+
+<!--------------Delete location-------------->
+
+@foreach (var loc in Model)
+{
+    <div id="locationsDivAdmin">
+        <hr style="border-color:rgba(255, 255, 255)">
+        <div><i class="fas fa-city"></i>&nbsp; @loc.Name</div>
+        <form action="DeleteLocation" method="post">
+            <button id="btnDltLocAdmin" name="del" value="@loc.LocationID" type="submit" asp-action="DeleteLocation" class="btn btn-danger float-right">
+                Delete
+            </button>
+        </form>
+
+    </div>
+
+    <br>
+}
+

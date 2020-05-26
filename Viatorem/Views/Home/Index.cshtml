@@ -1,0 +1,97 @@
+﻿@model  ViatoremModel.HomeViewModel
+@{
+    /*--------------Current user--------------*/
+
+    
+
+    ViewBag.Title = "HomeIndex";
+    ViatoremModel.User currentUser = (ViatoremModel.User)Session["user"];
+    string welcome;
+    welcome = (currentUser == null) ? "" : "Welcome " + currentUser.Username;
+    string myProfile = "";
+    string myTickets = "";
+    string logoutPopup = "";
+    string login = "";
+    string userPath = "#";
+
+
+}
+@if (currentUser == null)
+{
+    myProfile = "";
+    myTickets = "";
+    logoutPopup = "Login";
+
+}
+else
+{
+    myTickets = "http://dev.softlab.rs/Viatorem/User/MyTickets";
+    myProfile = "http://dev.softlab.rs/Viatorem/User/MyProfile";
+    logoutPopup = "Logout";
+
+
+}
+
+<!--------------Home nav menu-------------->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="@userPath">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" name="log" value="log">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            @if (currentUser != null)
+            {
+                <a class="nav-item nav-link" href="@myTickets">My Tickets<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="@myProfile">My Profile</a>
+            }
+            <a class="nav-item nav-link" href="http://dev.softlab.rs/Viatorem/Home/About">About Us</a>
+            <a class="nav-item nav-link" href="http://dev.softlab.rs/Viatorem/Home/Contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+
+<!--------------Form with destinations - homepage-------------->
+
+<div id="parameters">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <i class="fas fa-city"></i>
+        <select name="startLocation" id="startLoc" data-toggle="tooltip" title="Select start location">
+            <option value="" disabled selected>Select</option>
+            @foreach (var location in Model.locations)
+            {
+                if (location.Deleted != true)
+                {
+                    <option id="pocetna" value="@location.Name">@location.Name</option>
+                }
+            }
+        </select>
+        <i id="switch" class="fas fa-arrows-alt-h"></i>
+        <select name="endLocation" id="endLoc" data-toggle="tooltip" title="Select end location">
+            <option value="" disabled selected>Select</option>
+            @foreach (var location in Model.locations)
+            {
+                if (location.Deleted != true)
+                {
+                    <option value="@location.Name">@location.Name</option>
+                }
+            }
+        </select>
+        <i class="fas fa-city"></i>
+
+        <input type="date" id="date" name="date" value="" data-toggle="tooltip" title="Select date" />
+        <br /><br />
+        <div id="submitScheduleDiv">
+            <input type="submit" id="submitSchedule" name="submit" value="Load" asp-action="Schedules" class="btn btn-primary" />
+        </div>
+    }
+</div>
+<div id="nes">
+    @if (Request["submit"] == "Load")
+    {
+        @Html.Action("Schedules")
+    }
+</div>

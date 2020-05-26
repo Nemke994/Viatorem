@@ -1,0 +1,253 @@
+﻿body {
+    padding: 50px;
+    padding-top: 15px;
+    background-color: rgb(158, 213, 245);
+    min-width: 500px;
+}
+
+#wrapper {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.774);
+}
+
+img {
+    width: 100%;
+    border-radius: 10px;
+}
+table, tr, td, th {
+    height: auto;
+    width: 100%;
+    padding-left: 10px;
+    border: 1px solid black;
+}
+
+#banner {
+    width:100%;
+    background-color: rgba(219, 248, 248, 0.712);
+}
+
+#menu {
+    height: 30px;
+    padding: 2%;
+}
+
+#loginUser {
+    width: 10%;
+    border-radius: 10px;
+    background-color: rgba(185, 228, 248, 0.95);
+}
+
+#loginAdmin {
+    width: 10%;
+    margin-right: 5px;
+    border-radius: 10px;
+    background-color: rgba(185, 228, 248, 0.95);
+}
+
+#loginAdmin:hover, #loginUser:hover {
+        color: #0f76ece3;
+}
+
+#parameters {
+    padding: 3%;
+    margin-left: 20%;
+}
+
+#startLoc {
+    padding-left: 5px;
+    height: 25px;
+    width: 20%;
+    margin: auto;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: rgba(185, 228, 248, 0.95);
+    text-align: center;
+    cursor: pointer;
+}
+
+#endLoc {
+    height: 25px;
+    width: 20%;
+    margin: auto;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: rgba(185, 228, 248, 0.95);
+    text-align: center;
+    cursor: pointer;
+}
+
+#date {
+    height: 25px;
+    width: 20%;
+    margin: auto;
+    display: inline-block;
+}
+
+    #datum input:hover {
+        cursor: pointer;
+        background-color: #0f76ece3;
+    }
+footer {
+    height: 50px;
+    background-color: rgba(80, 171, 247, 0.712);
+    padding-top: 12px;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-top:5px;
+}
+
+    footer a {
+        color: white;
+    }
+
+.card {
+    background-color: rgba(219, 248, 241, 0.712);
+    border-radius: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    position: initial;
+}
+
+.card-body {
+    padding-left: 10%;
+}
+
+.card-header{
+    padding:0;
+}
+#startLoc:hover, #endLoc:hover {
+    background-color: #0f76ece3;
+}
+
+
+.gj-datepicker-bootstrap [role=right-icon] button .gj-icon, .gj-datepicker-bootstrap [role=right-icon] button .material-icons {
+    top: 2px;
+}
+
+#schedule {
+    font-size: 13px;
+}
+#schedule div {
+    padding: 10px;
+    display: inline-block;
+    width: 25%;
+}
+#submitSchedule {
+    width:60%;
+}
+#submitScheduleDiv {
+    margin: auto;
+    width: 60%;
+    font-size: 10px;
+    color: black;
+}
+
+#switch:hover {
+    cursor: pointer;
+    color: #0f76ece3;
+}
+
+#Col i:hover {
+    cursor: pointer;
+    color: #0f76ece3;
+}
+
+#Col {
+    font-size: 40px;
+}
+
+#allSeatsOne > div > i {
+    color: rgb(0, 0, 0);
+}
+#singupFormHome{
+margin-left: 5%;
+margin-right: 5%;
+}
+#loginFormHome {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#userProfileEditForm {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#userTickets {
+    
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#locationsDivAdmin {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#locFormAdmin {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.material-icons {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+#busFormAdmin {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#busDivAdmin {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#routeDivAdmin {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#routeFormAdmin {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#schFormAdmin {
+    padding-left: 5%;
+    padding-right: 5%;  
+}
+#userDivAdmin {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+#nightMode {
+    border-radius: 10px;
+    background-color: rgba(185, 228, 248, 0.95);
+}
+#nightMode:hover {
+    cursor: pointer;
+    color: white;
+}
+#dayMode {
+    border-radius: 10px;
+    background-color: rgba(185, 228, 248, 0.95);
+}
+
+#dayMode:hover {
+    cursor: pointer;
+    color: white;
+}
+#nightDay {
+    border-radius: 10px;
+    background-color: rgba(185, 228, 248, 0.95);
+}
+.permanentlyReserved {
+    color:red;
+}
+#accordion {
+    transition: background-color 2s;
+}
+
+#accordion:hover {
+    background-color:dodgerblue;
+}
